@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фанфіки</title>
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" id="themeStylesheetLink" href="styles/dark.css">
+    <script src="//code.jquery.com/jquery.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <!--nav bar-->
+    <!-- <div class="navbar">
+        <a href="index.html" id="home-nav"><span class="material-symbols-outlined">home</span> Головна</a>
+        <a href="login.html"><span class="material-symbols-outlined">how_to_reg</span> Вхід / Реєстрація</a>
+        <span class="material-symbols-outlined">search</span> Пошук фанфіків
+        <a href="tech-recs.html"><span class="material-symbols-outlined">tv_options_edit_channels</span> Технічні рекомендації</a>
+        <a href="forum.html"><span class="material-symbols-outlined">forum</span> Форум </a>
+        <a href="community-rules.html" style="text-decoration:none"><span class="material-symbols-outlined">gavel</span> Державний Кодекс</a>
+    </div> -->
+    <nav><%- include('../common/navbar')%></nav>
+
+    <h1>Вітаю, 
+    </h1>
+    <p class="info">
+        You are on the main page. 
+        Resize the window to see how responsive the page is.
+        Your credentials are storred in the MySQL local server (if you configured everything properly). You can change the "temporal user" by pressing the button under the link. 
+        Click on the picture to see a meme. 
+        Use a navbar to visit some other pages or logout (not all pages are available at the moment).
+        There is also a search bar. It will highlight all parts of the text with the selected string.
+    </p>
+    <p class="info">Вітаю, цей проєкт створено з найважливішою на світі метою: розваги (ну і для мого заліку в універі, але це вторинне). Про найважливішу жартую, але сподіваюсь, що цей мікро внесок у розвиток украЇнськоЇ культури допоможе вам, друзі, цікаво та з комфортом провести час.</p>
+    
+    <!--meme-->
+    <img src="images/my-meme2.jpg" alt="super meme">
+    <a href="https://fanfic.com.ua/fanfic/%d1%87%d0%b0%d1%81%d1%82%d0%b8%d0%bd%d0%b0-%d0%bf%d0%b5%d1%80%d1%88%d0%b0-3/">Адблок: Шок! чупарський та руденко п'яні цілуються, детальніше...</a>
+    <p class="side-note">Увійдіть у свій акаунт, аби ставити вподобайки, залишати коментарі та публікувати свої твори.</p>
+      <h1>Останні пости</h1>
+        <ul class="article-ul">
+          <% data.forEach(post => { %>
+            <li>
+              <a href="/post/<%= post._id %>">
+                <span><%= post.title %></span>
+                <span class="article-list__date"><%= post.createdAt.toDateString() %></span>
+              </a>
+            </li>
+          <% }) %>
+        </ul>
+      
+      
+        <% if (nextPage !== null) { %>
+          <a href="/?page=<%= nextPage %>" class="pagination">&lt; View Older Posts</a>
+        <% } %>
+        
+        <!--change user-->
+        <p><%- include('../common/themes')%></p>
+        <button class="button-user" id="change-user">Змінити користувача</button>
+    <script src="/scripts/main.js"></script>
+    <script src="/scripts/navbar.js"></script>
+    <script src="/scripts/themes.js"></script>
+</body>
+</html>

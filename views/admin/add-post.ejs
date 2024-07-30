@@ -1,0 +1,51 @@
+<a href="/dashboard">&larr; Back</a>
+<div class="admin-title">
+  <h2>Add New Post</h2>
+</div>
+
+<!-- <form action="/add-post" method="POST">
+
+  <label for="title"><b>Title</b></label>
+  <input type="text" placeholder="Post Title" name="title">
+
+  <label for="body"><b>Content</b></label>
+  <textarea name="body" cols="50" rows="10"></textarea>
+
+  <input type="submit" value="Add" class="btn">
+
+</form> -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Post</title>
+    <script>
+        function addPage() {
+            const pagesContainer = document.getElementById('pages-container');
+            const pageCount = pagesContainer.children.length;
+            const newPage = document.createElement('div');
+            newPage.innerHTML = `
+                <label>Page ${pageCount + 1}:</label><br>
+                <textarea name="pages"></textarea><br>
+            `;
+            pagesContainer.appendChild(newPage);
+        }
+    </script>
+</head>
+<body>
+    <h1>New Post</h1>
+    <form action="/add-post" method="POST">
+        <label>Title:</label><br>
+        <input type="text" name="title"><br>
+        <div id="pages-container">
+            <label>Page 1:</label><br>
+            <textarea name="pages"></textarea><br>
+        </div>
+        <button type="button" onclick="addPage()">Add Page</button><br>
+        <button type="submit">Create Post</button>
+    </form>
+</body>
+</html>
+
+
+

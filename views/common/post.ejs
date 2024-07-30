@@ -1,0 +1,36 @@
+
+<!-- <nav><%- include('../patrials/header')%></nav>
+<h1><%= data.title %></h1>
+<p>Author: <%= data.email %></p>
+<h2>Pages:</h2>
+<% data.pages.forEach(page => { %>
+  <div><%= page %></div>
+<% }); %>
+<nav><%- include('../patrials/footer')%></nav> -->
+<!-- <p><%- include('../common/themes')%></p> -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <nav><%- include('../patrials/header')%></nav>
+    <title><%= data.title %></title>
+</head>
+<body>
+    <h1><%= data.title %></h1>
+    <p><%= data.description %></p>
+
+    <h2>Chapters:</h2>
+    <ul>
+        <% data.chapters.forEach(chapter => { %>
+            <li><a href="/data/<%= data._id %>/chapter/<%= chapter._id %>"><%= chapter.title %></a></li>
+        <% }); %>
+    </ul>
+
+    <!-- Add new chapter form -->
+    <form action="/data/<%= data._id %>/chapters" method="data">
+        <input type="text" name="title" placeholder="Chapter Title" required>
+        <textarea name="content" placeholder="Chapter Content" required></textarea>
+        <button type="submit">Add Chapter</button>
+    </form>
+    <nav><%- include('../patrials/footer')%></nav>
+</body>
